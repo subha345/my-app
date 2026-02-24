@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --accent: #6366f1;
+  --accent-light: #818cf8;
+  --surface: #141414;
+  --surface-light: #1e1e1e;
+  --border: #262626;
+  --muted: #737373;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-surface: var(--surface);
+  --color-surface-light: var(--surface-light);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* ── Hero entrance ─────────────────────────────────────── */
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 0.8; }
+}
+
+.animate-fade-in-up { animation: fade-in-up 0.7s ease-out both; }
+.animate-fade-in    { animation: fade-in 0.6s ease-out both; }
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+
+/* ── Hero photo float ──────────────────────────────────── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* ── Scroll-reveal primitives ──────────────────────────── */
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes reveal-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes reveal-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes reveal-scale {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes reveal-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.reveal-hidden {
+  opacity: 0;
+}
+
+.reveal-up    { animation: reveal-up    0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.reveal-left  { animation: reveal-left  0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.reveal-right { animation: reveal-right 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.reveal-scale { animation: reveal-scale 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.reveal-fade  { animation: reveal-fade  0.6s ease-out both; }
+
+/* ── Timeline dot pulse ────────────────────────────────── */
+
+@keyframes dot-ping {
+  0%        { transform: scale(1); opacity: 0.8; }
+  70%, 100% { transform: scale(2.2); opacity: 0; }
+}
+
+.timeline-dot::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  background: var(--accent);
+  animation: dot-ping 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* ── Heading line draw ─────────────────────────────────── */
+
+@keyframes draw-line {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.heading-line {
+  transform-origin: left;
+  animation: draw-line 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+/* ── Card hover lift ───────────────────────────────────── */
+
+.card-lift {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* ── Skill pill pop-in ─────────────────────────────────── */
+
+@keyframes pop-in {
+  from { opacity: 0; transform: scale(0.8) translateY(6px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.pill-pop {
+  animation: pop-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Misc ──────────────────────────────────────────────── */
+
+::selection {
+  background-color: #6366f180;
+  color: white;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #333 transparent;
+}

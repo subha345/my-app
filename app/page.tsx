@@ -495,12 +495,6 @@ function HeroSection() {
             </p>
             <div className="animate-fade-in-up delay-400 flex flex-wrap gap-4">
               <a
-                href="/apps"
-                className="rounded-full border-2 border-accent bg-accent/20 px-8 py-3 text-sm font-semibold text-accent transition-all duration-200 hover:bg-accent hover:text-white hover:shadow-lg hover:shadow-accent/25"
-              >
-                Explore Mini Apps
-              </a>
-              <a
                 href="#projects"
                 className="rounded-full bg-accent px-8 py-3 text-sm font-medium text-white transition-all duration-200 hover:bg-accent-light hover:shadow-lg hover:shadow-accent/25"
               >
@@ -930,6 +924,24 @@ function SectionHeading({
   );
 }
 
+function ExploreFab() {
+  return (
+    <a
+      href="/apps"
+      aria-label="Explore Mini Apps"
+      className="fab-enter fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3.5 text-sm font-semibold text-white shadow-xl shadow-accent/30 transition-all duration-300 hover:bg-accent-light hover:shadow-2xl hover:shadow-accent/40 hover:scale-105 active:scale-95 md:hidden"
+    >
+      <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <rect x="3" y="3" width="7" height="7" rx="1.5" />
+        <rect x="14" y="3" width="7" height="7" rx="1.5" />
+        <rect x="3" y="14" width="7" height="7" rx="1.5" />
+        <rect x="14" y="14" width="7" height="7" rx="1.5" />
+      </svg>
+      Mini Apps
+    </a>
+  );
+}
+
 export default function Home() {
   const { activeSection, scrolledPastHero } = useScrollSpy();
 
@@ -944,6 +956,7 @@ export default function Home() {
       <ProjectsSection />
       <ContactSection />
       <Footer />
+      <ExploreFab />
     </>
   );
 }

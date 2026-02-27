@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { InstallPrompt } from "./components/InstallPrompt";
+import { ServiceWorkerRegistration } from "./components/ServiceWorkerRegistration";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,11 +18,22 @@ export const metadata: Metadata = {
   title: "Subhadatta Samal | Senior Full Stack Developer",
   description:
     "Portfolio of Subhadatta Samal — Senior Full Stack Developer with 10+ years of experience in React, React Native, Node.js, and Python.",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "SS Portfolio",
+  },
+  icons: {
+    icon: "/icon-192.png",
+    apple: "/icon-192.png",
+  },
 };
 
 export const viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: "#6366f1",
 };
 
 export default function RootLayout({
@@ -34,6 +47,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
       >
         {children}
+        <InstallPrompt />
+        <ServiceWorkerRegistration />
       </body>
     </html>
   );
